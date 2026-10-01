@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "smoke_test": false,
+    "seed": 42,
+    "device": "cuda",
+    "on_colab": false,
+    "python": "3.11.0rc1",
+    "versions": {
+      "torch": "2.4.1+cu121",
+      "transformers": "4.45.2",
+      "sacrebleu": "2.6.0",
+      "unbabel-comet": "2.2.7",
+      "numpy": "1.25.2",
+      "pandas": "2.2.3"
+    },
+    "model_ids": {
+      "NLLB-200-600M": "facebook/nllb-200-distilled-600M",
+      "opus-mt-en-de": "Helsinki-NLP/opus-mt-en-de",
+      "comet": "Unbabel/eamt22-cometinho-da"
+    },
+    "config": {
+      "flores_url": "https://dl.fbaipublicfiles.com/nllb/flores200_dataset.tar.gz",
+      "systems": {
+        "NLLB-200-600M": "facebook/nllb-200-distilled-600M",
+        "opus-mt-en-de": "Helsinki-NLP/opus-mt-en-de"
+      },
+      "comet_model": "Unbabel/eamt22-cometinho-da",
+      "num_beams": 4,
+      "flores_n": null,
+      "corpus": {
+        "hf_id": "sentence-transformers/parallel-sentences-wikimatrix",
+        "config": "en-de",
+        "split": "train"
+      },
+      "corpus_n": 20000,
+      "filter": {
+        "min_chars": 5,
+        "max_words": 100,
+        "max_len_ratio": 2.0,
+        "lid_min_conf": 0.5,
+        "lid_url": "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz"
+      }
+    }
+  },
+  "part1": {
+    "n_sentences": 1012,
+    "comet_model": "Unbabel/eamt22-cometinho-da",
+    "systems": {
+      "NLLB-200-600M": {
+        "model_id": "facebook/nllb-200-distilled-600M",
+        "chrF": 62.020276475193484,
+        "chrF_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+        "BLEU": 34.68394826445211,
+        "BLEU_signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+        "COMET": 0.550575154004324
+      },
+      "opus-mt-en-de": {
+        "model_id": "Helsinki-NLP/opus-mt-en-de",
+        "chrF": 63.6598247097932,
+        "chrF_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+        "BLEU": 36.17147530567637,
+        "BLEU_signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+        "COMET": 0.5530030130129859
+      }
+    }
+  },
+  "part2": {
+    "source": {
+      "hf_id": "sentence-transformers/parallel-sentences-wikimatrix",
+      "config": "en-de",
+      "split": "train",
+      "total_rows": 344476,
+      "sample_n": 20000,
+      "sampling": "datasets shuffle(seed=42).select(range(20000))"
+    },
+    "lid_backend": "fasttext lid.176.ftz",
+    "thresholds": {
+      "min_chars": 5,
+      "max_words": 100,
+      "max_len_ratio": 2.0,
+      "lid_min_conf": 0.5,
+      "lid_url": "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz"
+    },
+    "n_total": 20000,
+    "n_removed": 1669,
+    "n_kept": 18331,
+    "pct_removed": 8.345,
+    "per_rule": {
+      "empty": {
+        "failed_any": 0,
+        "removed_first": 0
+      },
+      "duplicate": {
+        "failed_any": 0,
+        "removed_first": 0
+      },
+      "length": {
+        "failed_any": 21,
+        "removed_first": 21
+      },
+      "lang_id": {
+        "failed_any": 987,
+        "removed_first": 981
+      },
+      "number_mismatch": {
+        "failed_any": 729,
+        "removed_first": 667
+      }
+    }
+  }
+}
