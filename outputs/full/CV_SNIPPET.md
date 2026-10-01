@@ -1,3 +1,0 @@
-- Evaluated 2 MT systems (NLLB-200, Marian opus-mt) on FLORES-200 EN-DE with chrF, BLEU and COMET; best system reached chrF 63.7 and COMET 0.553
-- Built a parallel-corpus filter (deduplication, length ratio, language ID, number mismatch) that removed 8.3% of 20000 sentence pairs, with [NOT RUN] filter precision in a manual check of [NOT RUN] pairs
-- Analyzed [NOT RUN] translation errors by category across the best and worst system
